@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Cambios en la base de datos para agregar la columna 'activo' -->
+    <changeSet id="2" author="tu_nombre" runAlways="true">
+    <!-- Agregar columna 'activo' con valores 0 o 1 (default 1) -->
+        <addColumn tableName="usuario">
+            <column name="activo" type="BOOLEAN" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+
+        <!-- Actualizar todos los registros existentes a 'activo' = true (1) -->
+        <update tableName="usuario">
+            <column name="activo" value="true"/>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>
